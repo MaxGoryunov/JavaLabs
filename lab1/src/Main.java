@@ -18,7 +18,7 @@ public class Main {
             System.out.println("str3" + " = " + str3);
         }
         if(!str3.equals((str1))) {
-            System.out.println("str3 " + "is not " + "str1");
+            System.out.println("str3 is not str1");
         }
         String str4 = null;
         String str5 = "";
@@ -39,5 +39,20 @@ public class Main {
         String str8 = str7.substring(1, str7.length() - 1);
         System.out.println("s8.length() : " + str8.length());
         System.out.println(String.join(".", "str", "trim()", "length()"));
+
+        StringBuilder bldr = new StringBuilder("Builder message");
+        bldr.append(" was changed")
+                .append(" and extended")
+                .append(" which shows these calls can be chained");
+        String built = bldr.toString();
+        System.out.println(built);
+        System.out.println(built.charAt(3) + " is a char at 3rd index");
+        if (built.contains("extended")) {
+            System.out.println("built string contains the word \"extended\"");
+        } else {
+            System.out.println("built string does not contain the word \"extended\"");
+        }
+        System.out.println("String with replaced word: " + built.replace("message", "text"));
+
     }
 }
