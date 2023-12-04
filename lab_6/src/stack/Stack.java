@@ -1,7 +1,9 @@
+package stack;
+
 import java.util.Arrays;
 import java.util.EmptyStackException;
 public final class Stack<T> {
-    private int length = 1;
+    private int length = 0;
     private T[] stack;
 
     public Stack() {
@@ -21,14 +23,14 @@ public final class Stack<T> {
     }
 
     public T top() {
-        if (!this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new EmptyStackException();
         }
         return this.stack[this.length - 1];
     }
 
     public void pop() {
-        if (!isEmpty()) {
+        if (this.isEmpty()) {
             throw new EmptyStackException();
         }
         this.length--;
@@ -36,10 +38,13 @@ public final class Stack<T> {
     }
 
     public void print() {
-        System.out.println("{");
-        for (int i = this.length - 1; i > 0; ++i) {
-            System.out.print(this.stack[i] + ", ");
+        System.out.print("{");
+        if (!this.isEmpty()) {
+            for (int i = this.length - 1; i > 0; --i) {
+                System.out.print("[" + i + "] = " + this.stack[i] + ", ");
+            }
+            System.out.print("[0] = " + this.stack[0]);
         }
-        System.out.println(this.stack[0] + "}");
+        System.out.println("}");
     }
 }
