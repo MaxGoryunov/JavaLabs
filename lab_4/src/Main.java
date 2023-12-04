@@ -1,3 +1,10 @@
+enum Suit {
+    SPADES,
+    CLUBS,
+    DIAMONDS,
+    HEARTS
+}
+
 public class Main {
     public static void main(String[] args) {
         Short s = 15000;
@@ -5,6 +12,7 @@ public class Main {
         Character c = 'M';
         Integer i = 100_000;
         // primitives for Short, Byte, Integer and Character are also okay
+        Suit hearts = Suit.HEARTS;
         switch(s) {
             case 10 -> System.out.println("s = 10");
             case 15000 -> System.out.println("s = 15000");
@@ -24,6 +32,12 @@ public class Main {
             case 10 -> System.out.println("i = 10");
             case 100000 -> System.out.println("i = 100000");
             default -> System.out.println("No matching branch for Integer");
+        }
+        switch (hearts) {
+            case SPADES -> System.out.println("Suit is Spades");
+            case CLUBS -> System.out.println("Suit is Clubs");
+            case DIAMONDS -> System.out.println("Suit is Diamonds");
+            case HEARTS -> System.out.println("Suit is Hearts");
         }
     }
 }
