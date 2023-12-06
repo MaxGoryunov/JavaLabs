@@ -62,4 +62,11 @@ public class Triple<T extends Number & Comparable<T>> {
                 + this.another.doubleValue()
         ) / 3;
     }
+
+    public void print() {
+        System.out.println("Values");
+        System.out.println(this.key);
+        System.out.println(this.value);
+        System.out.println(this.another);
+    }
 }
