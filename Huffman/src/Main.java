@@ -1,17 +1,23 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        if (args.length < 2) {
+            throw new IllegalArgumentException("Not enough arguments");
+        }
+        try {
+            switch (args[0]) {
+                case "encode" -> {
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+                }
+                case "decode" -> {
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+                }
+                case "info" -> {
+
+                }
+                default -> System.out.println("Illegal mode provided: choose encode, decode or info");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Program failed", e);
         }
     }
 }
