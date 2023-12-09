@@ -2,12 +2,12 @@ package io;
 
 import java.io.InputStream;
 
-public class OneBit {
+public class SingleInput {
     private final InputStream input;
     private int current = 0;
     private int position = 0;
 
-    public OneBit(InputStream input) {
+    public SingleInput(InputStream input) {
         this.input = input;
     }
 

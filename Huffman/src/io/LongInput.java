@@ -2,11 +2,11 @@ package io;
 
 import java.io.InputStream;
 
-public class BitsOf {
-    private OneBit bit;
+public class LongInput {
+    private final SingleInput bit;
 
-    public BitsOf(InputStream input) {
-        this.bit = new OneBit(input);
+    public LongInput(InputStream input) {
+        this.bit = new SingleInput(input);
     }
 
     public int bits(int count) throws Exception {
