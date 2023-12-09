@@ -5,6 +5,10 @@ import java.util.HashMap;
 public final class Tree {
     private Symbol root;
 
+    public static Tree fromText(String text) {
+
+    }
+
     public Tree(Symbol root) {
         this.root = root;
     }
