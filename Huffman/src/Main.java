@@ -1,3 +1,5 @@
+import modes.EncodedMode;
+
 public class Main {
     public static void main(String[] args) {
         if (args.length < 2) {
@@ -6,7 +8,7 @@ public class Main {
         try {
             switch (args[0]) {
                 case "encode" -> {
-
+                    new EncodedMode().encode(args[1]);
                 }
                 case "decode" -> {
 

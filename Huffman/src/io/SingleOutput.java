@@ -28,7 +28,7 @@ public class SingleOutput implements Closeable {
     public void close() throws IOException {
         try {
             while (this.position > 0) {
-                this.write(false);
+                this.write(true);
                 this.position--;
             }
         } catch (Exception e) {

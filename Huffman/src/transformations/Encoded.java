@@ -20,4 +20,8 @@ public class Encoded {
         }
         return encoded.toString();
     }
+
+    public HashMap<Character, String> codes() {
+        return this.codes;
+    }
 }
