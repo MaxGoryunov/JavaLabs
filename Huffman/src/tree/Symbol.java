@@ -23,6 +23,21 @@ public class Symbol {
         return this;
     }
 
+    public int occurrence() {
+        int occurrence = 0;
+        if (this.occurrence != 0) {
+            occurrence = this.occurrence;
+        } else {
+            if (this.left != null) {
+                occurrence += this.left.occurrence();
+            }
+            if (this.right != null) {
+                occurrence += this.right.occurrence();
+            }
+        }
+        return occurrence;
+    }
+
     public void huffmanCodes(String accumulated, HashMap<Character, String> codes) {
         if (this.left == null && this.right == null) {
             codes.put(this.symbol, accumulated);
