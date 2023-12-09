@@ -1,5 +1,7 @@
 package tree;
 
+import java.util.HashMap;
+
 public class Symbol {
     private final char symbol;
     private final int occurrence;
@@ -19,5 +21,18 @@ public class Symbol {
     public Symbol withRight(Symbol right) {
         this.right = right;
         return this;
+    }
+
+    public void huffmanCodes(String accumulated, HashMap<Character, String> codes) {
+        if (this.left == null && this.right == null) {
+            codes.put(this.symbol, accumulated);
+        } else {
+            if (this.left != null) {
+                this.left.huffmanCodes(accumulated + "0", codes);
+            }
+            if (this.right != null) {
+                this.right.huffmanCodes(accumulated + "1", codes);
+            }
+        }
     }
 }
