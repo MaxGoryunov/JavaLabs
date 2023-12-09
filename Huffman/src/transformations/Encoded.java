@@ -1,4 +1,4 @@
-package modes;
+package transformations;
 
 import tree.Occurrences;
 import tree.Ordered;
