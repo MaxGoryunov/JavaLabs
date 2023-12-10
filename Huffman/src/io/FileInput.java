@@ -15,8 +15,8 @@ public final class FileInput {
         this.input = input;
     }
 
-    public HashMap<Character, String> codes() throws Exception {
-        HashMap<Character, String> codes = new HashMap<>();
+    private HashMap<String, Character> reverseCodes() throws Exception {
+        HashMap<String, Character> codes = new HashMap<>();
         char symbol;
         while ((symbol = (char)this.input.bits(Sizes.CHAR_SIZE.size)) != 0) {
             int length = this.input.bits(Sizes.INT_SIZE.size);
@@ -24,8 +24,23 @@ public final class FileInput {
             for (int i = 0; i < length; ++i) {
                 encoding.append(this.input.bit());
             }
-            codes.put(symbol, encoding.toString());
+            codes.put(encoding.toString(), symbol);
         }
         return codes;
+    }
+
+    public String message() throws Exception {
+        HashMap<String, Character> codes = this.reverseCodes();
+        StringBuilder message = new StringBuilder();
+        String current = "";
+        int bit;
+        while ((bit = this.input.bit()) != -1) {
+            current += bit;
+            if (codes.containsKey(current)) {
+                message.append(codes.get(current));
+                current = "";
+            }
+        }
+        return message.toString();
     }
 }
