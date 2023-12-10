@@ -1,4 +1,6 @@
+import modes.DecodedMode;
 import modes.EncodedMode;
+import modes.InfoMode;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,13 +10,13 @@ public class Main {
         try {
             switch (args[0]) {
                 case "encode" -> {
-                    new EncodedMode().encode(args[1]);
+                    new EncodedMode(args[1], args[1] + "encoded.ark").encode();
                 }
                 case "decode" -> {
-
+                    new DecodedMode(args[1]).decode();
                 }
                 case "info" -> {
-
+                    new InfoMode().info(args[1]);
                 }
                 default -> System.out.println("Illegal mode provided: choose encode, decode or info");
             }

@@ -10,12 +10,20 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class EncodedMode {
-    public void encode(String path) throws Exception {
+    private final String path;
+    private final String destination;
+
+    public EncodedMode(String path, String destination) {
+        this.path = path;
+        this.destination = destination;
+    }
+
+    public void encode() throws Exception {
         Encoded encoded = new Encoded();
         String message = encoded.encode(
-            Files.readString(Paths.get(path))
+            Files.readString(Paths.get(this.path))
         );
-        new FileOutput("out.txt", new LongOutput(new SingleOutput(new FileOutputStream("out.txt"))))
+        new FileOutput(this.destination, new LongOutput(new SingleOutput(new FileOutputStream(this.destination))))
             .write(message, encoded.codes());
         System.out.println(encoded.codes().toString());
     }
