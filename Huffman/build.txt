@@ -1,0 +1,16 @@
+Application build
+
+Requirements:
+- JDK >= 16.0
+Optional requirements:
+- Intellij IDEA
+
+Build Steps
+
+1. Open command line terminal
+2. Create a directory for this project
+3. Execute `git clone` command to copy this repository:
+git clone https://github.com/MaxGoryunov/JavaLabs.git
+4. `cd` to `Huffman` subfolder and then to `src` subfolder
+5. Execute `javac` command to compile project
+javac Main.java

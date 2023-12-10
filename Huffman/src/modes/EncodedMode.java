@@ -25,6 +25,6 @@ public class EncodedMode {
         );
         new FileOutput(this.destination, new LongOutput(new SingleOutput(new FileOutputStream(this.destination))))
             .write(message, encoded.codes());
-        System.out.println(encoded.codes().toString());
+        //System.out.println(encoded.codes().toString());
     }
 }

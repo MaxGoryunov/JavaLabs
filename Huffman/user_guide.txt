@@ -1,0 +1,31 @@
+Application Usage
+
+1. `cd` to `src` subfolder
+2. Execute the following command:
+java Main <encode|decode|info> <file>
+- encode|decode|info - one of three modes this application supports;
+- file - a `.txt` file containing a message for encoding/decoding
+
+Examples
+1. Encode command:
+java Main encode input.txt
+
+After that a new file `input.txt.encoded.txt` will be created with the encoded
+message in it.
+
+2. Decode command:
+java Main decode out.txt
+
+After that a new file `out.txt.restored.txt` will be created with the restored
+message in it.
+
+3. Info command:
+java Main info out.txt
+
+After that the decoded file will be created and the program will provide the
+following information:
+- Encoded file size in bytes
+- Decoded file size in bytes
+- Degree of compression(less than 1 means that encoded message is smaller
+than the decoded message and the algorithm works)
+- Generated Huffman's tree

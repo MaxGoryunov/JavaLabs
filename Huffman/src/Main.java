@@ -10,7 +10,7 @@ public class Main {
         try {
             switch (args[0]) {
                 case "encode" -> {
-                    new EncodedMode(args[1], args[1] + "encoded.ark").encode();
+                    new EncodedMode(args[1], args[1] + ".encoded.txt").encode();
                 }
                 case "decode" -> {
                     new DecodedMode(args[1]).decode();
