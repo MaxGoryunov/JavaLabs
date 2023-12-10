@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 public final class FileInput {
-    private LongInput input;
+    private final LongInput input;
 
     public FileInput(String name) throws Exception {
         this(new LongInput(new FileInputStream(name)));
@@ -15,7 +15,7 @@ public final class FileInput {
         this.input = input;
     }
 
-    private HashMap<String, Character> reverseCodes() throws Exception {
+    public HashMap<String, Character> reverseCodes() throws Exception {
         HashMap<String, Character> codes = new HashMap<>();
         char symbol;
         while ((symbol = (char)this.input.bits(Sizes.CHAR_SIZE.size)) != 0) {
@@ -29,18 +29,7 @@ public final class FileInput {
         return codes;
     }
 
-    public String message() throws Exception {
-        HashMap<String, Character> codes = this.reverseCodes();
-        StringBuilder message = new StringBuilder();
-        String current = "";
-        int bit;
-        while ((bit = this.input.bit()) != -1) {
-            current += bit;
-            if (codes.containsKey(current)) {
-                message.append(codes.get(current));
-                current = "";
-            }
-        }
-        return message.toString();
+    public int bit() throws Exception {
+        return this.input.bit();
     }
 }

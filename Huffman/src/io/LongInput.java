@@ -6,7 +6,11 @@ public class LongInput {
     private final SingleInput bit;
 
     public LongInput(InputStream input) {
-        this.bit = new SingleInput(input);
+        this(new SingleInput(input));
+    }
+
+    public LongInput(SingleInput input) {
+        this.bit = input;
     }
 
     public int bit() throws Exception {
