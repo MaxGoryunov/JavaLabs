@@ -9,6 +9,10 @@ public class LongInput {
         this.bit = new SingleInput(input);
     }
 
+    public int bit() throws Exception {
+        return this.bit.value();
+    }
+
     public int bits(int count) throws Exception {
         int res = 0;
         for (int i = 0; i < count; ++i) {
