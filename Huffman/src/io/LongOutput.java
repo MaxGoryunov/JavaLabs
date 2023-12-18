@@ -20,6 +20,10 @@ public final class LongOutput implements Closeable {
         }
     }
 
+    public int position() {
+        return this.output.position();
+    }
+
     @Override
     public void close() throws IOException {
         this.output.close();

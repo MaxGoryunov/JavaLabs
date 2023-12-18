@@ -8,12 +8,14 @@ public class SingleOutput implements Closeable {
     private final OutputStream output;
     private int position = 0;
     private int current = 0;
+    private int total = 0;
 
     public SingleOutput(OutputStream output) {
         this.output = output;
     }
 
     public void write(boolean bit) throws Exception {
+        this.total++;
         this.current = (this.current << 1) | (bit ? 1 : 0);
         this.position++;
 
@@ -24,12 +26,15 @@ public class SingleOutput implements Closeable {
         }
     }
 
+    public int position() {
+        return this.position;
+    }
+
     @Override
     public void close() throws IOException {
         try {
             while (this.position > 0) {
                 this.write(true);
-                this.position--;
             }
         } catch (Exception e) {
             throw new IOException(e);

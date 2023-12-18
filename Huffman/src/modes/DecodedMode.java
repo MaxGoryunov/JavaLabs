@@ -9,22 +9,30 @@ import java.util.HashMap;
 
 public final class DecodedMode {
     private final String path;
+    private String destination = "";
     private final Decoded decoded;
 
     public DecodedMode(String path) throws Exception {
         this.path = path;
         this.decoded = new Decoded(new FileInput(this.path));
     }
-    public String destination() {
-        return this.path + ".restored.txt";
+    private String destination() throws Exception {
+        this.destination = this.path.substring(0, this.path.lastIndexOf('.')) + ".res." + this.decoded.extension();
+        return this.destination;
     }
 
-    public HashMap<String, Character> reversedCodes() {
+    public String Destination() {
+        return this.destination;
+    }
+
+
+    public HashMap<String, Byte> reversedCodes() {
         return this.decoded.reversedCodes();
     }
 
     public void decode() throws Exception {
-        String message = this.decoded.message();
-        Files.write(Paths.get(this.destination()), message.getBytes());
+        //String extension = this.decoded.extension();
+//        String message = this.decoded.message();
+        Files.write(Paths.get(this.destination()), this.decoded.message());
     }
 }

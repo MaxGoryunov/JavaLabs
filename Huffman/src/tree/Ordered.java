@@ -14,7 +14,7 @@ public class Ordered {
 
     public PriorityQueue<Symbol> value() {
         PriorityQueue<Symbol> queue = new PriorityQueue<>(Comparator.comparingInt(Symbol::occurrence));
-        this.occurrences.value().forEach((key, value) -> queue.add(new Symbol(key, value)));
+        this.occurrences.byteValue().forEach((key, value) -> queue.add(new Symbol(key, value)));
         return queue;
     }
 }

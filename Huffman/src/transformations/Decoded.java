@@ -8,29 +8,44 @@ import java.util.HashMap;
 
 public class Decoded {
     private final FileInput input;
-    private HashMap<String, Character> reversed;
+    private HashMap<String, Byte> reversed;
 
     public Decoded(FileInput input) {
         this.input = input;
         this.reversed = new HashMap<>();
     }
 
-    public String message() throws Exception {
-        this.reversed = this.input.reverseCodes();
-        StringBuilder message = new StringBuilder();
+    public byte[] message() throws Exception {
+        this.reversed = this.input.ReverseCodes();
+//        StringBuilder message = new StringBuilder();
+//        byte[] message = {};
         String current = "";
+        //System.out.println("here");
+        //System.out.println(this.reversed);
         int bit;
-        while ((bit = this.input.bit()) != -1) {
+        int bound = this.input.count();
+        int count = 0;
+        byte[] message = new byte[bound];
+        while (((bit = this.input.bit()) != -1) && (count < bound)) {
             current += bit;
             if (this.reversed.containsKey(current)) {
-                message.append(this.reversed.get(current));
+//                message.append(this.reversed.get(current));
+                message[count] = this.reversed.get(current);
                 current = "";
+                count++;
+                //System.out.println(count);
             }
         }
-        return message.toString();
+        System.out.println(current);
+        return message;
+//        return message.toString();
     }
 
-    public HashMap<String, Character> reversedCodes() {
+    public String extension() throws Exception {
+        return this.input.extension();
+    }
+
+    public HashMap<String, Byte> reversedCodes() {
         return this.reversed;
     }
 }

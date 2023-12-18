@@ -9,8 +9,8 @@ public final class Tree {
         this.root = root;
     }
 
-    public HashMap<Character, String> huffmanCodes(HashMap<Character, String> codes) {
-        this.root.huffmanCodes("", codes);
+    public HashMap<Byte, String> HuffmanCodes(HashMap<Byte, String> codes) {
+        this.root.HuffmanCodes("", codes);
         return codes;
     }
 }

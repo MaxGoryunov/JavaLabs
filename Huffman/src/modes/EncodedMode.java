@@ -20,11 +20,19 @@ public class EncodedMode {
 
     public void encode() throws Exception {
         Encoded encoded = new Encoded();
+//        String source = Files.readString(Paths.get(this.path));
+        byte[] source = Files.readAllBytes(Paths.get(this.path));
         String message = encoded.encode(
-            Files.readString(Paths.get(this.path))
+            source
         );
+        //System.out.println("length = " + source.length);
         new FileOutput(this.destination, new LongOutput(new SingleOutput(new FileOutputStream(this.destination))))
-            .write(message, encoded.codes());
+            .Write(
+                message,
+                encoded.Codes(),
+                source.length,
+                this.path.substring(this.path.lastIndexOf('.') + 1)
+            );
         //System.out.println(encoded.codes().toString());
     }
 }
