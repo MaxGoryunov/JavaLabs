@@ -8,6 +8,12 @@ public class Main {
         System.out.println("b2");
         b2.print();
 
+        try {
+            new Swap<>().exec(b1, b2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         b1.swap(b2);
         System.out.println("After swapping: ");
         System.out.println("b1");
